@@ -126,7 +126,7 @@ export function ApplicationLayout({ events, children }) {
               </SidebarItem>
               <SidebarItem href="/daniel" current={pathname.startsWith('/daniel')}>
                 <Square2StackIcon />
-                <SidebarLabel>Events</SidebarLabel>
+                <SidebarLabel>Daniel</SidebarLabel>
               </SidebarItem>
               <SidebarItem href="/events" current={pathname.startsWith('/events')}>
                 <Square2StackIcon />
