@@ -25,9 +25,9 @@ export default async function Home() {
 
   return (
     <>
-      <Heading>Good afternoon, Erica</Heading>
+      <Heading>God eftermiddag, Anders!</Heading>
       <div className="mt-8 flex items-end justify-between">
-        <Subheading>Overview</Subheading>
+        <Subheading>Överblick</Subheading>
         <div>
           <Select name="period">
             <option value="last_week">Last week</option>
