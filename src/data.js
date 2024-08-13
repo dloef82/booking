@@ -27,7 +27,7 @@ export async function getOrders() {
         },
       },
       customer: {
-        name: 'Leslie Alexander',
+        name: 'Daniel Löf',
         email: 'leslie.alexander@example.com',
         address: '123 Main St. Toronto, ON',
         country: 'Canada',
