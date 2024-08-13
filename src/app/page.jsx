@@ -5,6 +5,9 @@ import { Heading, Subheading } from '@/components/heading'
 import { Select } from '@/components/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
 import { getRecentOrders } from '@/data'
+import { Navbar } from '@/components/navbar'
+import { Sidebar } from '@/components/sidebar'
+import { StackedLayout } from '@/components/stacked-layout'
 
 export function Stat({ title, value, change }) {
   return (
@@ -24,7 +27,34 @@ export default async function Home() {
   let orders = await getRecentOrders()
 
   return (
-    <>
+    <StackedLayout
+      navbar={
+        <Navbar>
+          <nav>
+            <ul className="flex space-x-4">
+              <li><a href="#">Överblick</a></li>
+              <li><a href="#">Bokningsöversikt</a></li>
+              <li><a href="#">Köket</a></li>
+              <li><a href="#">Sektioner</a></li>
+              <li><a href="#">Inställningar</a></li>
+            </ul>
+          </nav>
+        </Navbar>
+      }
+      sidebar={
+        <Sidebar>
+          <nav>
+            <ul className="space-y-4">
+              <li><a href="#">Överblick</a></li>
+              <li><a href="#">Bokningsöversikt</a></li>
+              <li><a href="#">Köket</a></li>
+              <li><a href="#">Sektioner</a></li>
+              <li><a href="#">Inställningar</a></li>
+            </ul>
+          </nav>
+        </Sidebar>
+      }
+    >
       <Heading>Good afternoon, Erica</Heading>
       <div className="mt-8 flex items-end justify-between">
         <Subheading>Overview</Subheading>
@@ -71,6 +101,7 @@ export default async function Home() {
           ))}
         </TableBody>
       </Table>
-    </>
+    </StackedLayout>
   )
 }
+
