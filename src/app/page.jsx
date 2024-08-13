@@ -1,219 +1,76 @@
 import { Avatar } from '@/components/avatar'
-import {
-  Dropdown,
-  DropdownButton,
-  DropdownDivider,
-  DropdownItem,
-  DropdownLabel,
-  DropdownMenu,
-} from '@/components/dropdown'
-import { Navbar, NavbarItem, NavbarSection, NavbarSpacer } from '@/components/navbar'
-import {
-  Sidebar,
-  SidebarBody,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarHeading,
-  SidebarItem,
-  SidebarLabel,
-  SidebarSection,
-  SidebarSpacer,
-} from '@/components/sidebar'
-import { SidebarLayout } from '@/components/sidebar-layout'
-import {
-  ArrowRightStartOnRectangleIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  Cog8ToothIcon,
-  LightBulbIcon,
-  PlusIcon,
-  ShieldCheckIcon,
-  UserIcon,
-} from '@heroicons/react/16/solid'
-import {
-  Cog6ToothIcon,
-  HomeIcon,
-  InboxIcon,
-  MagnifyingGlassIcon,
-  MegaphoneIcon,
-  QuestionMarkCircleIcon,
-  SparklesIcon,
-  Square2StackIcon,
-  TicketIcon,
-} from '@heroicons/react/20/solid'
+import { Badge } from '@/components/badge'
+import { Divider } from '@/components/divider'
+import { Heading, Subheading } from '@/components/heading'
+import { Select } from '@/components/select'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/table'
+import { getRecentOrders } from '@/data'
 
-function Example() {
+export function Stat({ title, value, change }) {
   return (
-    <SidebarLayout
-      navbar={
-        <Navbar>
-          <NavbarSpacer />
-          <NavbarSection>
-            <NavbarItem href="/search" aria-label="Search">
-              <MagnifyingGlassIcon />
-            </NavbarItem>
-            <NavbarItem href="/inbox" aria-label="Inbox">
-              <InboxIcon />
-            </NavbarItem>
-            <Dropdown>
-              <DropdownButton as={NavbarItem}>
-                <Avatar src="/profile-photo.jpg" square />
-              </DropdownButton>
-              <DropdownMenu className="min-w-64" anchor="bottom end">
-                <DropdownItem href="/my-profile">
-                  <UserIcon />
-                  <DropdownLabel>My profile</DropdownLabel>
-                </DropdownItem>
-                <DropdownItem href="/settings">
-                  <Cog8ToothIcon />
-                  <DropdownLabel>Settings</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
-                <DropdownItem href="/privacy-policy">
-                  <ShieldCheckIcon />
-                  <DropdownLabel>Privacy policy</DropdownLabel>
-                </DropdownItem>
-                <DropdownItem href="/share-feedback">
-                  <LightBulbIcon />
-                  <DropdownLabel>Share feedback</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
-                <DropdownItem href="/logout">
-                  <ArrowRightStartOnRectangleIcon />
-                  <DropdownLabel>Sign out</DropdownLabel>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </NavbarSection>
-        </Navbar>
-      }
-      sidebar={
-        <Sidebar>
-          <SidebarHeader>
-            <Dropdown>
-              <DropdownButton as={SidebarItem} className="lg:mb-2.5">
-                <Avatar src="/tailwind-logo.svg" />
-                <SidebarLabel>Tailwind Labs</SidebarLabel>
-                <ChevronDownIcon />
-              </DropdownButton>
-              <DropdownMenu className="min-w-80 lg:min-w-64" anchor="bottom start">
-                <DropdownItem href="/teams/1/settings">
-                  <Cog8ToothIcon />
-                  <DropdownLabel>Settings</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
-                <DropdownItem href="/teams/1">
-                  <Avatar slot="icon" src="/tailwind-logo.svg" />
-                  <DropdownLabel>Tailwind Labs</DropdownLabel>
-                </DropdownItem>
-                <DropdownItem href="/teams/2">
-                  <Avatar slot="icon" initials="WC" className="bg-purple-500 text-white" />
-                  <DropdownLabel>Workcation</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
-                <DropdownItem href="/teams/create">
-                  <PlusIcon />
-                  <DropdownLabel>New team&hellip;</DropdownLabel>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-            <SidebarSection className="max-lg:hidden">
-              <SidebarItem href="/search">
-                <MagnifyingGlassIcon />
-                <SidebarLabel>Search</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/inbox">
-                <InboxIcon />
-                <SidebarLabel>Inbox</SidebarLabel>
-              </SidebarItem>
-            </SidebarSection>
-          </SidebarHeader>
-          <SidebarBody>
-            <SidebarSection>
-              <SidebarItem href="/">
-                <HomeIcon />
-                <SidebarLabel>Home</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/events">
-                <Square2StackIcon />
-                <SidebarLabel>Events</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/orders">
-                <TicketIcon />
-                <SidebarLabel>Orders</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/settings">
-                <Cog6ToothIcon />
-                <SidebarLabel>Settings</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/broadcasts">
-                <MegaphoneIcon />
-                <SidebarLabel>Broadcasts</SidebarLabel>
-              </SidebarItem>
-            </SidebarSection>
-            <SidebarSection className="max-lg:hidden">
-              <SidebarHeading>Upcoming Events</SidebarHeading>
-              <SidebarItem href="/events/1">Bear Hug: Live in Concert</SidebarItem>
-              <SidebarItem href="/events/2">Viking People</SidebarItem>
-              <SidebarItem href="/events/3">Six Fingers — DJ Set</SidebarItem>
-              <SidebarItem href="/events/4">We All Look The Same</SidebarItem>
-            </SidebarSection>
-            <SidebarSpacer />
-            <SidebarSection>
-              <SidebarItem href="/support">
-                <QuestionMarkCircleIcon />
-                <SidebarLabel>Support</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/changelog">
-                <SparklesIcon />
-                <SidebarLabel>Changelog</SidebarLabel>
-              </SidebarItem>
-            </SidebarSection>
-          </SidebarBody>
-          <SidebarFooter className="max-lg:hidden">
-            <Dropdown>
-              <DropdownButton as={SidebarItem}>
-                <span className="flex min-w-0 items-center gap-3">
-                  <Avatar src="/profile-photo.jpg" className="size-10" square alt="" />
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm/5 font-medium text-zinc-950 dark:text-white">Erica</span>
-                    <span className="block truncate text-xs/5 font-normal text-zinc-500 dark:text-zinc-400">
-                      erica@example.com
-                    </span>
-                  </span>
-                </span>
-                <ChevronUpIcon />
-              </DropdownButton>
-              <DropdownMenu className="min-w-64" anchor="top start">
-                <DropdownItem href="/my-profile">
-                  <UserIcon />
-                  <DropdownLabel>My profile</DropdownLabel>
-                </DropdownItem>
-                <DropdownItem href="/settings">
-                  <Cog8ToothIcon />
-                  <DropdownLabel>Settings</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
-                <DropdownItem href="/privacy-policy">
-                  <ShieldCheckIcon />
-                  <DropdownLabel>Privacy policy</DropdownLabel>
-                </DropdownItem>
-                <DropdownItem href="/share-feedback">
-                  <LightBulbIcon />
-                  <DropdownLabel>Share feedback</DropdownLabel>
-                </DropdownItem>
-                <DropdownDivider />
-                <DropdownItem href="/logout">
-                  <ArrowRightStartOnRectangleIcon />
-                  <DropdownLabel>Sign out</DropdownLabel>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </SidebarFooter>
-        </Sidebar>
-      }
-    >
-      {/* The page content */}
-    </SidebarLayout>
+    <div>
+      <Divider />
+      <div className="mt-6 text-lg/6 font-medium sm:text-sm/6">{title}</div>
+      <div className="mt-3 text-3xl/8 font-semibold sm:text-2xl/8">{value}</div>
+      <div className="mt-3 text-sm/6 sm:text-xs/6">
+        <Badge color={change.startsWith('+') ? 'lime' : 'pink'}>{change}</Badge>{' '}
+        <span className="text-zinc-500">from last week</span>
+      </div>
+    </div>
+  )
+}
+
+export default async function Home() {
+  let orders = await getRecentOrders()
+
+  return (
+    <>
+      <Heading>Good afternoon, Erica</Heading>
+      <div className="mt-8 flex items-end justify-between">
+        <Subheading>Overview</Subheading>
+        <div>
+          <Select name="period">
+            <option value="last_week">Last week</option>
+            <option value="last_two">Last two weeks</option>
+            <option value="last_month">Last month</option>
+            <option value="last_quarter">Last quarter</option>
+          </Select>
+        </div>
+      </div>
+      <div className="mt-4 grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
+        <Stat title="Total revenue" value="$2.6M" change="+4.5%" />
+        <Stat title="Average order value" value="$455" change="-0.5%" />
+        <Stat title="Tickets sold" value="5,888" change="+4.5%" />
+        <Stat title="Pageviews" value="823,067" change="+21.2%" />
+      </div>
+      <Subheading className="mt-14">Recent orders</Subheading>
+      <Table className="mt-4 [--gutter:theme(spacing.6)] lg:[--gutter:theme(spacing.10)]">
+        <TableHead>
+          <TableRow>
+            <TableHeader>Order number</TableHeader>
+            <TableHeader>Purchase date</TableHeader>
+            <TableHeader>Customer</TableHeader>
+            <TableHeader>Event</TableHeader>
+            <TableHeader className="text-right">Amount</TableHeader>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {orders.map((order) => (
+            <TableRow key={order.id} href={order.url} title={`Order #${order.id}`}>
+              <TableCell>{order.id}</TableCell>
+              <TableCell className="text-zinc-500">{order.date}</TableCell>
+              <TableCell>{order.customer.name}</TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <Avatar src={order.event.thumbUrl} className="size-6" />
+                  <span>{order.event.name}</span>
+                </div>
+              </TableCell>
+              <TableCell className="text-right">US{order.amount.usd}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </>
   )
 }
