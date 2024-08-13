@@ -21,14 +21,16 @@ import {
 } from '@heroicons/react/16/solid'
 import { InboxIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
+// Define navigation items
 const navItems = [
-  { label: 'Home', url: '/' },
-  { label: 'Events', url: '/events' },
-  { label: 'Orders', url: '/orders' },
-  { label: 'Broadcasts', url: '/broadcasts' },
-  { label: 'Settings', url: '/settings' },
+  { label: 'Överblick', url: '/page' },
+  { label: 'Bokningsöversikt', url: '/orders' },
+  { label: 'Köket', url: '/kitchen' },
+  { label: 'Sektioner', url: '/sections' },
+  { label: 'Inställningar', url: '/settings' },
 ]
 
+// Define the Team Dropdown Menu
 function TeamDropdownMenu() {
   return (
     <DropdownMenu className="min-w-80 lg:min-w-64" anchor="bottom start">
@@ -54,7 +56,8 @@ function TeamDropdownMenu() {
   )
 }
 
-function Example() {
+// Main Page Component
+export default function Page({ children }) {
   return (
     <StackedLayout
       navbar={
@@ -136,10 +139,4 @@ function Example() {
               ))}
             </SidebarSection>
           </SidebarBody>
-        </Sidebar>
-      }
-    >
-      {children}
-    </StackedLayout>
-  )
-}
+       
